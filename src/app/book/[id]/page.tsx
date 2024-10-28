@@ -1,4 +1,5 @@
 import { getDetailBook } from "@/app/lib/microcms/client";
+import { BookType } from "@/app/types/types";
 import Image from "next/image";
 import React from "react";
 
@@ -7,7 +8,7 @@ import React from "react";
 // この関数が実行されると、データベース（またはCMS）からその本の情報（book）が返されます。
 
 const DetailBook = async ({ params }: { params: { id: string } }) => {
-  const book = await getDetailBook(params.id);
+  const book: BookType = await getDetailBook(params.id);
 
   return (
     <div className="container mx-auto p-4">
@@ -28,7 +29,7 @@ const DetailBook = async ({ params }: { params: { id: string } }) => {
 
           <div className="flex justify-between items-center mt-2">
             <span className="text-sm text-gray-500">
-              公開日:{new Date(book.publishedAt as any).toLocaleDateString()}
+              公開日:{new Date(book.publishedAt).toLocaleDateString()}
             </span>
             <span className="text-sm text-gray-500">
               最終更新:{new Date(book.updatedAt).toLocaleDateString()}

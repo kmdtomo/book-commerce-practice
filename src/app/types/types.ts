@@ -25,4 +25,17 @@ type Purchase = {
   user: User;
 };
 
-export type { BookType, User, Purchase };
+type Provider = {
+  id: string;
+  name: string;
+  type: string;
+  signinUrl: string;
+  callbackUrl?: string;
+  credentials?: {
+    [key: string]: { label: string; type: string; required: boolean };
+  };
+};
+
+type Providers = Record<string, Provider | null>;
+
+export type { BookType, User, Purchase, Provider, Providers };

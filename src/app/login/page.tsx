@@ -2,11 +2,10 @@
 
 import { FC, useEffect, useState } from "react";
 import { getProviders, signIn } from "next-auth/react";
+import { Providers } from "../types/types";
 
 const Login: FC = () => {
-  const [providers, setProviders] = useState<any>(null); // プロバイダーを管理するための状態
-
-  console.log(providers);
+  const [providers, setProviders] = useState<Providers | null>(null); // プロバイダーを管理するための状態
 
   // 非同期でプロバイダーを取得
   useEffect(() => {
@@ -27,10 +26,10 @@ const Login: FC = () => {
         </div>
         <div className="mt-8 space-y-6">
           {providers &&
-            Object.values(providers).map((provider: any) => (
-              <div className="text-center" key={provider.id}>
+            Object.values(providers).map((provider) => (
+              <div className="text-center" key={provider?.id}>
                 <button
-                  onClick={() => signIn(provider.id, { callbackUrl: "/" })}
+                  onClick={() => signIn(provider?.id, { callbackUrl: "/" })}
                   className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded flex items-center justify-center w-full"
                 >
                   <svg
