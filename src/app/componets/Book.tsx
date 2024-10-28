@@ -57,7 +57,7 @@ const Book: FC<Props> = ({ book, isPurcahsed }) => {
   const onClickPurchase = () => {
     if (!user) {
       setShowModal(false);
-      router.push("/login");
+      router.push("/api/auth/signin");
     } else {
       startCheckout();
     }
