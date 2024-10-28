@@ -13,7 +13,6 @@ const PurchaseSuccess = () => {
     const fetchData = async () => {
       if (sessionId) {
         try {
-          console.log(sessionId);
           const res = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/checkout/success`,
             {

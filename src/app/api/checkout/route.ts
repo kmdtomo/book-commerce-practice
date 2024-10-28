@@ -2,9 +2,9 @@ import Stripe from "stripe";
 import { NextResponse } from "next/server";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-export async function POST(request: Request, response: Response) {
+export async function POST(request: Request) {
   const { title, price, bookId, userId } = await request.json();
-  console.log(title, price);
+  // console.log(title, price);
 
   try {
     // チェックアウトセッションの作成
@@ -33,7 +33,9 @@ export async function POST(request: Request, response: Response) {
     return NextResponse.json({
       checkout_url: session.url,
     });
-  } catch (err: any) {
-    return NextResponse.json({ message: err.message });
+  } catch {
+    return NextResponse.json({
+      message: "エラーが発生しました。もう一度お試しください。",
+    });
   }
 }
