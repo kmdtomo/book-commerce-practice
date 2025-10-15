@@ -2,6 +2,8 @@ import { getServerSession } from "next-auth";
 import { getAllBucks } from "./lib/microcms/client";
 import { BookType, Purchase, User } from "./types/types";
 import { nextAuthOptions } from "./lib/nextAuth/options";
+
+
 import Book from "./componets/Book";
 
 export default async function Home() {
